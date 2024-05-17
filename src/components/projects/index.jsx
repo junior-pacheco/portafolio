@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import {  IconTailwindcss, Iconjs,  IconReact, IconNextjs, IconTypescript, IconJamPadlockF,DeviconNestjs } from '../../../public/icons/icons';
+import { useState,useEffect } from 'react';
+import { IconTailwindcss, Iconjs, IconReact, IconNextjs, IconTypescript, IconJamPadlockF, DeviconNestjs } from '../../../public/icons/icons';
 import { motion } from 'framer-motion';
 import Modal from 'react-modal';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { BsFillImageFill } from 'react-icons/bs';
-
+import { ClipLoader } from 'react-spinners'; // Importa el spinner
 
 Modal.setAppElement('#root');
 
@@ -14,15 +14,31 @@ const Projects = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [loading, setLoading] = useState(true); // Estado para controlar la carga
+
+    // Agrega una nueva clase al body cuando el modal se abre
+    useEffect(() => {
+      if (modalIsOpen) {
+        document.body.classList.add("modal-open");
+      } else {
+        document.body.classList.remove("modal-open");
+      }
+    }, [modalIsOpen]);
+  
 
   const openModal = (project) => {
     setSelectedProject(project);
+    setLoading(true); // Activa el estado de carga al abrir el modal
     setModalIsOpen(true);
   };
 
   const closeModal = () => {
     setModalIsOpen(false);
     setSelectedProject(null);
+  };
+
+  const handleImageLoad = () => {
+    setLoading(false); // Desactiva el estado de carga cuando la imagen se carga
   };
 
   const projects = [
@@ -39,7 +55,6 @@ const Projects = () => {
     {
       name: 'Mvsion',
       description: "MVision es un software para gestionar fotos y videos en pantallas de salas de espera y publicidad. Permite crear y configurar pantallas, subir contenido, y definir horarios y orden de reproducción. Las pantallas se conectan a un hardware controlado por MVision para administrar el modo quiosco.",
-      
       images: ['/img/login.jpg', '/img/img1.jpg','/img/img2.jpg','/img/img3.jpg','/img/img4.jpg'],
     },
   ];
@@ -82,6 +97,7 @@ const Projects = () => {
         onRequestClose={closeModal}
         contentLabel="Project Images"
         className="bg-slate-900 p-5 rounded-2xl shadow-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[80%] h-[95%]"
+        overlayClassName="fixed inset-0  bg-black bg-opacity-70"
       >
         {selectedProject && (
           <div className='flex p-2 rounded-sm h-[100%] flex-col '>
@@ -90,13 +106,23 @@ const Projects = () => {
               <h2 className="text-2xl text-yellow-500 p-10 mb-4">Images - {selectedProject.name}</h2>
             </div>
             <div className='flex justify-center items-center rounded-sm overflow-hidden  h-[93%] relative'>
+              {loading && (
+                <div className="absolute flex justify-center items-center w-full h-full bg-slate-900/70">
+                  <ClipLoader color="red" loading={true} size={50} />
+                </div>
+              )}
               <Slider 
                 arrows={true} dots={true} className='cursor-pointer rounded-sm w-[90%]'
                 beforeChange={(oldIndex, newIndex) => setCurrentSlide(newIndex)}
               >
                 {selectedProject.images.map((image, index) => (
                   <div key={index}>
-                    <img src={image} alt={`Project Image ${index + 1}`} className="w-full h-auto rounded-xl" />
+                    <img 
+                      src={image} 
+                      alt={`Project Image ${index + 1}`} 
+                      className="w-full h-auto rounded-xl" 
+                      onLoad={handleImageLoad} // Llama a handleImageLoad cuando la imagen se carga
+                    />
                   </div>
                 ))}
               </Slider>
@@ -104,7 +130,6 @@ const Projects = () => {
           </div>
         )}
       </Modal>
-
     </div>
   );
 };
