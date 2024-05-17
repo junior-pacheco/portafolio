@@ -43,6 +43,11 @@ const Projects = () => {
 
   const projects = [
     {
+      name: 'Mvsion',
+      description: "MVision es un software para gestionar fotos y videos en pantallas de salas de espera y publicidad. Permite crear y configurar pantallas, subir contenido, y definir horarios y orden de reproducción. Las pantallas se conectan a un hardware controlado por MVision para administrar el modo quiosco.",
+      images: ['/img/login.jpg', '/img/img1.jpg','/img/img2.jpg','/img/img3.jpg','/img/img4.jpg'],
+    },
+    {
       name: 'Tekneo',
       description: "Se trata de una solución tecnológica destinada a mejorar la eficacia y la seguridad en las empresas, permitiendo visualizar las cámaras de seguridad, llevar un registro de las horas de entrada y gestionar el acceso a las distintas zonas conectadas a los sistemas domóticos.",
       images: ['/img/tekneo1.jpg', '/img/tekneo2.jpg','/img/tekneo3.jpg','/img/tekneo4.jpg'],
@@ -51,11 +56,6 @@ const Projects = () => {
       name: 'Node maker',
       description: "Es un proyecto que simplifica la creación y gestión de fuentes de datos KNX y MQTT en una red local. Facilita la comunicación entre ellas, permite crear perfiles y rutas, y ofrece una interfaz de supervisión para la visualización de datos. El software agiliza la transferencia de datos entre fuentes, promoviendo una gestión eficiente de la red.",
       images: ['/img/node1.jpg', '/img/node2.jpg'],
-    },
-    {
-      name: 'Mvsion',
-      description: "MVision es un software para gestionar fotos y videos en pantallas de salas de espera y publicidad. Permite crear y configurar pantallas, subir contenido, y definir horarios y orden de reproducción. Las pantallas se conectan a un hardware controlado por MVision para administrar el modo quiosco.",
-      images: ['/img/login.jpg', '/img/img1.jpg','/img/img2.jpg','/img/img3.jpg','/img/img4.jpg'],
     },
   ];
 
@@ -103,7 +103,7 @@ const Projects = () => {
           <div className='flex p-2 rounded-sm h-[100%] flex-col '>
             <div className='flex items-center rounded-sm  text-left  h-[7%] '>
               <button onClick={closeModal} className="absolute top-2 right-2 text-white text-3xl hover:text-gray-300">×</button>
-              <h2 className="text-2xl text-yellow-500 p-10 mb-4">Images - {selectedProject.name}</h2>
+              <h2 className="text-2xl text-yellow-500 p-10 mb-4">Imágenes - {selectedProject.name}</h2>
             </div>
             <div className='flex justify-center items-center rounded-sm overflow-hidden  h-[93%] relative'>
               {loading && (

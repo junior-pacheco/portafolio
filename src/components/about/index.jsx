@@ -76,14 +76,14 @@ const About = () => {
           >
             <h2 className="text-3xl text-green-400 font-semibold mb-5">Frontend</h2>
             <ul className="list-disc text-base list-inside">
-              <li>Web and software development with React, Next, Vite, Vue</li>
-              <li>HTML5, CSS3, and Sass</li>
-              <li>Styling with Tailwind CSS</li>
-              <li>Development in TypeScript, JavaScript</li>
-              <li>Project building with Node.js-Express</li>
-              <li>Containerization with Docker</li>
-              <li>English (intermediate)</li>
-              <li>SCRUM methodology</li>
+              <li>Desarrollo web y de software con React, Next, Vite y Vue</li>
+              <li>HTML5, CSS3 y Sass</li>
+              <li>Estilización con Tailwind CSS</li>
+              <li>Desarrollo en TypeScript, JavaScript</li>
+              <li>Construcción de proyectos con Node.js-Express</li>
+              <li>Contenerización con Docker</li>
+              <li>Inglés (intermedio)</li>
+              <li>Metodología SCRUM</li>
             </ul>
           </motion.div>
 
