@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { BsFillImageFill } from 'react-icons/bs';
 import { ClipLoader } from 'react-spinners'; // Importa el spinner
+import { IoIosCloseCircle } from "react-icons/io";
 
 Modal.setAppElement('#root');
 
@@ -102,7 +103,7 @@ const Projects = () => {
         {selectedProject && (
           <div className='flex p-2 rounded-sm h-[100%] flex-col '>
             <div className='flex items-center rounded-sm  text-left  h-[7%] '>
-              <button onClick={closeModal} className="absolute top-2 right-2 text-white text-3xl hover:text-gray-300">×</button>
+              <button onClick={closeModal} className="absolute top-2 right-2 text-white text-3xl hover:text-gray-300"><IoIosCloseCircle size={40}/></button>
               <h2 className="text-2xl text-yellow-500 p-10 mb-4">Imágenes - {selectedProject.name}</h2>
             </div>
             <div className='flex justify-center items-center rounded-sm overflow-hidden  h-[93%] relative'>
